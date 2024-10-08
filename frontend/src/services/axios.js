@@ -8,6 +8,7 @@ const baseUrl =
 const instance = axios.create({
     baseURL: baseUrl,
     withCredentials: true,
+    withXSRFToken: true
 });
 
 export default instance;
