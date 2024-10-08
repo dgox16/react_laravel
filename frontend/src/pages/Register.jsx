@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {registerRequest} from "../services/authRequests.js";
 
 
 export const Register = () => {
@@ -15,9 +16,13 @@ export const Register = () => {
             [name]: value,
         });
     };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData)
+    const handleSubmit = async (e) => {
+        try {
+            e.preventDefault();
+            await registerRequest(formData);
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
     }
 
     return (
