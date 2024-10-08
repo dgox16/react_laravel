@@ -1,0 +1,75 @@
+GET http://localhost:8000/api/user
+Accept: application/json
+
+###
+
+GET http://localhost:8000/api/products
+Authorization: Bearer 2|qr2nEJ5mdfgrcpMjiO5O21zJrsuvZKnTHBrCl64u8c165e65
+Accept: application/json
+
+###
+
+GET http://localhost:8000/api/products/2
+Authorization: Bearer 2|qr2nEJ5mdfgrcpMjiO5O21zJrsuvZKnTHBrCl64u8c165e65
+Accept: application/json
+
+###
+
+DELETE http://localhost:8000/api/products/3
+Authorization: Bearer 2|qr2nEJ5mdfgrcpMjiO5O21zJrsuvZKnTHBrCl64u8c165e65
+Accept: application/json
+
+###
+
+POST http://localhost:8000/api/products
+Accept: application/json
+Authorization: Bearer 2|qr2nEJ5mdfgrcpMjiO5O21zJrsuvZKnTHBrCl64u8c165e65
+Content-Type: application/json
+
+{
+    "name": "AULA F75",
+    "price": 1321,
+    "description": "Teclado Mecanico"
+}
+
+###
+
+PUT http://localhost:8000/api/products/3
+Accept: application/json
+Authorization: Bearer 2|qr2nEJ5mdfgrcpMjiO5O21zJrsuvZKnTHBrCl64u8c165e65
+Content-Type: application/json
+
+{
+    "name": "AULA X122",
+    "price": 3221,
+    "description": "Teclado Mecanico"
+}
+
+###
+
+POST http://localhost:8000/api/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Diego Armando",
+    "email": "dgox16@gmail.com",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:8000/api/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "dgox16@gmail.com",
+    "password": "password"
+}
+
+###
+
+GET http://localhost:8000/api/user
+Accept: application/json
+Authorization: Bearer 2|qr2nEJ5mdfgrcpMjiO5O21zJrsuvZKnTHBrCl64u8c165e65
