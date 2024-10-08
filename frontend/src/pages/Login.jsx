@@ -1,8 +1,12 @@
 import {useState} from "react";
 import {getCsrfToken, loginRequest} from "../services/authRequests.js";
+import {useAuthStore} from "../store/auth.js";
 
 
 export const Login = () => {
+    const {
+        setUser,
+    } = useAuthStore();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -20,7 +24,10 @@ export const Login = () => {
         try {
             await getCsrfToken();
             const res = await loginRequest(formData);
-            console.log(res.status);
+            if (res.status) {
+                const {name, email, id} = res.data;
+                setUser({id, name, email});
+            }
         } catch (error) {
             console.log(error.response.data.message)
         }
@@ -49,7 +56,6 @@ export const Login = () => {
                         <button type="submit"
                                 className="p-2 bg-blue-400 w-full font-bold mt-5 rounded-lg">SUBMIT
                         </button>
-
                     </div>
                 </form>
             </div>
