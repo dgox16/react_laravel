@@ -23,7 +23,6 @@ class UserController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'User Created Successfully',
-                'token' => $user_created->createToken("access_token")->plainTextToken
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
