@@ -13,6 +13,7 @@ Route::get('/user', function (Request $request) {
 Route::get('/sanctum/csrf-cookie', [CsrfCookieController::class, 'show']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::controller(ProductController::class)->group(function () {
     Route::get('/products', 'index')->middleware('auth:sanctum');
