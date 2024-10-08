@@ -47,7 +47,7 @@ class UserController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
-                'token' => $user_logged->createToken("access_token")->plainTextToken
+                'data' => $user_logged
             ], 200);
 
         } catch (\Throwable $th) {
