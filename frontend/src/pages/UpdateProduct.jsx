@@ -66,7 +66,7 @@ export const UpdateProduct = () => {
                                 />
                             </div>
                             <button type="submit"
-                                    className="p-2 bg-yellow-400 w-full font-semibold mt-5 rounded-lg">SUBMIT
+                                    className="p-2 bg-yellow-400 w-full font-semibold mt-5 rounded-lg">Submit
                             </button>
                         </div>
                     </form>

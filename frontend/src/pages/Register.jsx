@@ -1,9 +1,11 @@
 import {registerRequest} from "../services/authRequests.js";
 import {PageLayout} from "../layouts/PageLayout.jsx";
 import {useForm} from "../hooks/useForm.js";
+import {useNavigate} from "react-router-dom";
 
 
 export const Register = () => {
+    const navigate = useNavigate();
     const {formData, handleChange} = useForm({
         name: '',
         email: '',
@@ -14,6 +16,7 @@ export const Register = () => {
         e.preventDefault();
         try {
             await registerRequest(formData);
+            navigate('/products')
         } catch (error) {
             console.log(error.response.data.message)
         }
@@ -48,7 +51,7 @@ export const Register = () => {
                                 />
                             </div>
                             <button type="submit"
-                                    className="p-2 bg-purple-300 text-purple-800 w-full font-bold mt-5 rounded-lg">SUBMIT
+                                    className="p-2 bg-purple-300 text-purple-800 w-full font-semibold mt-5 rounded-lg">Submit
                             </button>
 
                         </div>
