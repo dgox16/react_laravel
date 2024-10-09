@@ -1,22 +1,15 @@
-import {useState} from "react";
 import {registerRequest} from "../services/authRequests.js";
 import {PageLayout} from "../layouts/PageLayout.jsx";
+import {useForm} from "../hooks/useForm.jsx";
 
 
 export const Register = () => {
-    const [formData, setFormData] = useState({
+    const {formData, handleChange} = useForm({
         name: '',
         email: '',
         password: '',
     });
 
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

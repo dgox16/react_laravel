@@ -1,8 +1,8 @@
-import {useState} from "react";
 import {getCsrfToken, loginRequest} from "../services/authRequests.js";
 import {useAuthStore} from "../store/auth.js";
 import {PageLayout} from "../layouts/PageLayout.jsx";
 import {useNavigate} from "react-router-dom";
+import {useForm} from "../hooks/useForm.jsx";
 
 
 export const Login = () => {
@@ -11,18 +11,11 @@ export const Login = () => {
         setUser,
     } = useAuthStore();
 
-    const [formData, setFormData] = useState({
+    const {formData, handleChange} = useForm({
         email: '',
         password: '',
     });
 
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
