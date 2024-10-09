@@ -1,6 +1,10 @@
-export const ProductItem = ({product}) => {
+export const ProductItem = ({product, deleteProduct}) => {
+    const handleDelete = () => {
+        deleteProduct(product.id);
+    }
+
     return (
-        <div className="bg-gray-200 my-3 p-4 rounded-lg flex justify-between">
+        <div className="bg-gray-100 my-3 p-4 rounded-lg flex justify-between">
             <div>
                 <h1 className="text-2xl font-semibold text-gray-900">
                     {product.name}
@@ -20,6 +24,7 @@ export const ProductItem = ({product}) => {
                 </button>
                 <button
                     className="bg-red-200 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-red-800"
+                    onClick={handleDelete}
                 >
                     Delete Product
                 </button>

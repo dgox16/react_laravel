@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {getProductsRequest} from "../services/productRequest.js";
+import {deleteProductRequest, getProductsRequest} from "../services/productRequest.js";
 
 export const useProducts = () => {
     const [products, setProducts] = useState([])
@@ -14,5 +14,12 @@ export const useProducts = () => {
         getProducts()
     }, []);
 
-    return {products, loading};
+    const deleteProduct = async (id) => {
+        const response = await deleteProductRequest(id)
+        if (response.status) {
+            setProducts(products.filter(product => product.id !== id))
+        }
+    }
+
+    return {products, loading, deleteProduct};
 };
