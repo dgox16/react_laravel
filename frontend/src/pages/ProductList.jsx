@@ -1,18 +1,8 @@
 import {PageLayout} from "../layouts/PageLayout.jsx";
-import {useEffect, useState} from "react";
-import {getProductsRequest} from "../services/productRequest.js";
+import {useProducts} from "../hooks/useProducts.js";
 
 export const ProductList = () => {
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
-    useEffect(() => {
-        const getProducts = async () => {
-            const response = await getProductsRequest()
-            setProducts(response)
-            setLoading(false)
-        }
-        getProducts()
-    }, []);
+    const {products, loading} = useProducts();
     return (
         <PageLayout>
             {loading ? (

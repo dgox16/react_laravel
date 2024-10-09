@@ -2,7 +2,7 @@ import {getCsrfToken, loginRequest} from "../services/authRequests.js";
 import {useAuthStore} from "../store/auth.js";
 import {PageLayout} from "../layouts/PageLayout.jsx";
 import {useNavigate} from "react-router-dom";
-import {useForm} from "../hooks/useForm.jsx";
+import {useForm} from "../hooks/useForm.js";
 
 
 export const Login = () => {

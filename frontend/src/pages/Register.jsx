@@ -1,6 +1,6 @@
 import {registerRequest} from "../services/authRequests.js";
 import {PageLayout} from "../layouts/PageLayout.jsx";
-import {useForm} from "../hooks/useForm.jsx";
+import {useForm} from "../hooks/useForm.js";
 
 
 export const Register = () => {
