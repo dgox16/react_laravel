@@ -53,7 +53,7 @@ export const Login = () => {
                                 />
                             </div>
                             <button type="submit"
-                                    className="p-2 bg-green-400 w-full font-semibold mt-5 rounded-lg">SUBMIT
+                                    className="p-2 bg-green-300 text-green-800 w-full font-semibold mt-5 rounded-lg">SUBMIT
                             </button>
                         </div>
                     </form>

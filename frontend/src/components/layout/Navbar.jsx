@@ -26,17 +26,26 @@ export const Navbar = () => {
                     </div>
                     {user ? (
                             <button
-                                className="bg-red-500 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-white"
+                                className="bg-pink-300 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-pink-800"
                                 onClick={handleLogout}
                             >
                                 Logout
                             </button>
                         ) :
-                        <Link
-                            className="bg-blue-500 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-white"
-                            to={"/login"}>
-                            Log In
-                        </Link>
+                        (
+                            <div>
+                                <Link
+                                    className="bg-purple-300 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-purple-800 mr-3"
+                                    to={"/register"}>
+                                    Register
+                                </Link>
+                                <Link
+                                    className="bg-green-300 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-green-800"
+                                    to={"/login"}>
+                                    Log In
+                                </Link>
+                            </div>
+                        )
                     }
                 </div>
             </div>

@@ -1,10 +1,8 @@
-export const ProductItem = ({product, deleteProduct}) => {
-    const handleDelete = () => {
-        deleteProduct(product.id);
-    }
+import {Link} from "react-router-dom";
 
+export const ProductItem = ({product, deleteProduct}) => {
     return (
-        <div className="bg-gray-100 my-3 p-4 rounded-lg flex justify-between">
+        <div className="bg-gray-100 mb-3 p-4 rounded-lg flex justify-between">
             <div>
                 <h1 className="text-2xl font-semibold text-gray-900">
                     {product.name}
@@ -17,14 +15,15 @@ export const ProductItem = ({product, deleteProduct}) => {
                 </span>
             </div>
             <div className="flex flex-col items-center">
-                <button
+                <Link
                     className="bg-yellow-200 mb-3 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-yellow-800"
+                    to={`/products/${product.id}`}
                 >
                     Update Product
-                </button>
+                </Link>
                 <button
                     className="bg-red-200 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-red-800"
-                    onClick={handleDelete}
+                    onClick={() => deleteProduct(product.id)}
                 >
                     Delete Product
                 </button>

@@ -15,7 +15,12 @@ export const createProductRequest = async (data) => {
     return res.data;
 };
 
-export const updateProductRequest = async (data) => {
-    const res = await axios.put("/products", data);
+export const updateProductRequest = async (id, data) => {
+    const res = await axios.put(`/products/${id}`, data);
     return res.data;
 };
+export const getProductRequest = async (id) => {
+    const res = await axios.get(`/products/${id}`);
+    return res.data;
+};
+

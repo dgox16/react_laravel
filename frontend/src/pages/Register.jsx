@@ -48,7 +48,7 @@ export const Register = () => {
                                 />
                             </div>
                             <button type="submit"
-                                    className="p-2 bg-green-400 w-full font-bold mt-5 rounded-lg">SUBMIT
+                                    className="p-2 bg-purple-300 text-purple-800 w-full font-bold mt-5 rounded-lg">SUBMIT
                             </button>
 
                         </div>
