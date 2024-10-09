@@ -14,6 +14,12 @@ export const loginRequest = async (credentials) => {
     return res.data;
 };
 
+export const logoutRequest = async (credentials) => {
+    const res = await axios.get("/logout", credentials);
+    return res.data;
+};
+
+
 export const validateUserRequest = async () => {
     const res = await axios.get("/user")
     return res.data;
