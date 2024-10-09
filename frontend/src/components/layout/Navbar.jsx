@@ -1,5 +1,5 @@
-import {useAuthStore} from "../store/auth.js";
-import {logoutRequest} from "../services/authRequests.js";
+import {useAuthStore} from "../../store/auth.js";
+import {logoutRequest} from "../../services/authRequests.js";
 import {Link, useNavigate} from "react-router-dom";
 
 export const Navbar = () => {
