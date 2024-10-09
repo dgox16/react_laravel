@@ -28,7 +28,7 @@ export const Register = () => {
 
     return (
         <PageLayout>
-            <div className="flex justify-center items-center h-screen">
+            <div className="flex justify-center items-center h-[calc(100vh-56px)]">
                 <div className="text-center w-fit rounded-md bg-gray-100 py-7 px-6 flex justify-center flex-col">
                     <h1 className="text-3xl font-bold text-gray-700 mb-5 uppercase">Register</h1>
                     <form onSubmit={handleSubmit} className="flex justify-center">
