@@ -3,6 +3,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './index.css'
 import {Register} from "./pages/Register.jsx";
 import {Login} from "./pages/Login.jsx";
+import {Navbar} from "./components/Navbar.jsx";
 
 const router = createBrowserRouter([
     {
@@ -16,5 +17,12 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router}/>
+    <>
+        <nav>
+            <Navbar/>
+        </nav>
+        <main>
+            <RouterProvider router={router}/>
+        </main>
+    </>
 )

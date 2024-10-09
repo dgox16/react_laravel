@@ -7,6 +7,7 @@ export const Login = () => {
     const {
         setUser,
     } = useAuthStore();
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -54,7 +55,7 @@ export const Login = () => {
                             />
                         </div>
                         <button type="submit"
-                                className="p-2 bg-blue-400 w-full font-bold mt-5 rounded-lg">SUBMIT
+                                className="p-2 bg-blue-400 w-full font-semibold mt-5 rounded-lg">SUBMIT
                         </button>
                     </div>
                 </form>
