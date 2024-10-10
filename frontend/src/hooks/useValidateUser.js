@@ -7,17 +7,18 @@ export const useValidateUser = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-            try {
-                const validateSession = async () => {
-                    const res = await validateUserRequest()
-                    setUser(res)
+            const validateSession = async () => {
+                try {
+                    const res = await validateUserRequest();
+                    setUser(res);
+                } catch (e) {
+                    logout();
+                } finally {
+                    setLoading(false);
                 }
-                validateSession()
-            } catch (e) {
-                logout()
-            } finally {
-                setLoading(false)
-            }
+            };
+            validateSession();
+
         },
         []);
     return {loading};
