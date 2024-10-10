@@ -43,6 +43,7 @@ class UserController extends Controller
             }
 
             $user_logged = User::firstWhere('email', $request->email);
+            $request->session()->regenerate();
 
             return response()->json([
                 'status' => true,
