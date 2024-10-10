@@ -24,7 +24,7 @@ export const NewProduct = () => {
         }
     }
     return (
-        <PageLayout>
+        <PageLayout authRequired={true}>
             <div className="flex justify-center items-center h-[calc(100vh-56px)]">
                 <div className="text-center w-fit rounded-md bg-gray-100 py-7 px-6 flex justify-center flex-col">
                     <h1 className="text-3xl font-bold text-gray-700 mb-5 uppercase">New product</h1>

@@ -1,17 +1,23 @@
 import {useEffect, useState} from 'react';
 import {deleteProductRequest, getProductsRequest} from "../services/productRequest.js";
+import {useAuthStore} from "../store/auth.js";
 
 export const useProducts = () => {
+    const {
+        user
+    } = useAuthStore();
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const getProducts = async () => {
-            const response = await getProductsRequest()
-            setProducts(response)
-            setLoading(false)
+        if (user) {
+            const getProducts = async () => {
+                const response = await getProductsRequest()
+                setProducts(response)
+                setLoading(false)
+            }
+            getProducts()
         }
-        getProducts()
     }, []);
 
     const deleteProduct = async (id) => {

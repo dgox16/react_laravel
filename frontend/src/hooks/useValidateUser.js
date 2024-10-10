@@ -20,5 +20,5 @@ export const useValidateUser = () => {
             }
         },
         []);
-    return loading;
+    return {loading};
 }

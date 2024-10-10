@@ -21,6 +21,10 @@ export const logoutRequest = async (credentials) => {
 
 
 export const validateUserRequest = async () => {
-    const res = await axios.get("/user")
-    return res.data;
+    try {
+        const res = await axios.get("/user")
+        return res;
+    } catch (e) {
+        return null
+    }
 }
