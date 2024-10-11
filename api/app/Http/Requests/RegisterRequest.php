@@ -4,6 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property mixed $name
+ * @property mixed $email
+ * @property mixed $password
+ */
 class RegisterRequest extends FormRequest
 {
     public function authorize(): bool
