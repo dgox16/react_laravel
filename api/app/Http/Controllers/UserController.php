@@ -22,7 +22,7 @@ class UserController extends Controller
 
             return response()->json([
                 'status' => true,
-                'message' => 'User Created Successfully',
+                'message' => __('auth_messages.user_created')
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -38,16 +38,15 @@ class UserController extends Controller
             if (!Auth::attempt($request->only(['email', 'password']))) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Email & Password does not match with our record.',
+                    'message' => __('auth_messages.credential_not_match')
                 ], 401);
             }
 
             $user_logged = User::firstWhere('email', $request->email);
-            $request->session()->regenerate();
 
             return response()->json([
                 'status' => true,
-                'message' => 'User Logged In Successfully',
+                'message' => __('auth_messages.user_logged'),
                 'data' => $user_logged
             ], 200);
 
@@ -69,7 +68,7 @@ class UserController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'User Logged Out Successfully',
+            'message' => __('auth_messages.logout')
         ], 200);
     }
 }
