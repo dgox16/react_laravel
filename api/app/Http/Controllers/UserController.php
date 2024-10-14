@@ -62,15 +62,37 @@ class UserController extends Controller
 
     public function logout(Request $request): JsonResponse
     {
-        Auth::guard('web')->logout();
+        try {
+            Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
 
-        $request->session()->regenerateToken();
+            return response()->json([
+                'status' => true,
+                'message' => __('auth_messages.logout')
+            ]);
+        } catch (Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
 
-        return response()->json([
-            'status' => true,
-            'message' => __('auth_messages.logout')
-        ]);
+    public function getUser(Request $request): JsonResponse
+    {
+        try {
+            $user = Auth::user();
+            return response()->json([
+                'status' => true,
+                'data' => $user
+            ]);
+        } catch (Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 }
