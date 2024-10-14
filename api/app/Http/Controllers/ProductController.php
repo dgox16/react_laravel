@@ -7,8 +7,10 @@ use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Throwable;
 
 class ProductController extends Controller
 {
@@ -24,7 +26,7 @@ class ProductController extends Controller
         return new ProductCollection($products);
     }
 
-    public function store(StoreProductRequest $request): \Illuminate\Http\JsonResponse
+    public function store(StoreProductRequest $request): JsonResponse
     {
         try {
             if ($request->user()->cannot('create', Product::class)) {
@@ -41,9 +43,9 @@ class ProductController extends Controller
                 'status' => true,
                 'message' => 'Product created successfully',
                 'data' => $product
-            ], 200);
+            ]);
 
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
@@ -51,7 +53,7 @@ class ProductController extends Controller
         }
     }
 
-    public function show(Request $request, Product $product)
+    public function show(Request $request, Product $product): ProductResource
     {
         if ($request->user()->cannot('view', $product)) {
             abort(403);
@@ -59,7 +61,7 @@ class ProductController extends Controller
         return new ProductResource($product);
     }
 
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product): JsonResponse
     {
         try {
             if ($request->user()->cannot('update', $product)) {
@@ -76,9 +78,9 @@ class ProductController extends Controller
                 'status' => true,
                 'message' => 'Product updated successfully',
                 'data' => $product
-            ], 200);
+            ]);
 
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
@@ -86,7 +88,7 @@ class ProductController extends Controller
         }
     }
 
-    public function destroy(Request $request, Product $product)
+    public function destroy(Request $request, Product $product): JsonResponse
     {
         try {
             if ($request->user()->cannot('delete', $product)) {
@@ -98,9 +100,9 @@ class ProductController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Product deleted successfully',
-            ], 200);
+            ]);
 
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()

@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Throwable;
 
 class UserController extends Controller
 {
-    public function register(RegisterRequest $request): \Illuminate\Http\JsonResponse
+    public function register(RegisterRequest $request): JsonResponse
     {
         try {
             User::create([
@@ -23,8 +25,8 @@ class UserController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => __('auth_messages.user_created')
-            ], 200);
-        } catch (\Throwable $th) {
+            ]);
+        } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
@@ -32,7 +34,7 @@ class UserController extends Controller
         }
     }
 
-    public function login(LoginRequest $request): \Illuminate\Http\JsonResponse
+    public function login(LoginRequest $request): JsonResponse
     {
         try {
             if (!Auth::attempt($request->only(['email', 'password']))) {
@@ -48,9 +50,9 @@ class UserController extends Controller
                 'status' => true,
                 'message' => __('auth_messages.user_logged'),
                 'data' => $user_logged
-            ], 200);
+            ]);
 
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
@@ -58,7 +60,7 @@ class UserController extends Controller
         }
     }
 
-    public function logout(Request $request): \Illuminate\Http\JsonResponse
+    public function logout(Request $request): JsonResponse
     {
         Auth::guard('web')->logout();
 
@@ -69,6 +71,6 @@ class UserController extends Controller
         return response()->json([
             'status' => true,
             'message' => __('auth_messages.logout')
-        ], 200);
+        ]);
     }
 }

@@ -5,8 +5,15 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property mixed $id
+ * @property mixed $name
+ * @property mixed $description
+ * @property mixed $price
+ */
 class ProductResource extends JsonResource
 {
+
     /**
      * Transform the resource into an array.
      *
