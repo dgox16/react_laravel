@@ -4,4 +4,5 @@ return [
     'credential_not_match' => 'El correo electronico y contrasena no coinciden.',
     'user_created' => 'Usuario creado con exito.',
     'logout' => 'Sesion cerrada con exito.',
+    'unauthorized' => 'Acceso no autorizado.',
 ];

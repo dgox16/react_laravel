@@ -1,5 +1,6 @@
 GET http://localhost:8000/api/user
 Accept: application/json
+Accept-Language: es
 
 ###
 
