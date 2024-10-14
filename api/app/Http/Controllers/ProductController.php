@@ -19,9 +19,8 @@ class ProductController extends Controller
         if ($request->user()->cannot('viewAny', Product::class)) {
             abort(403);
         }
-        $userId = Auth::id();
 
-        $products = Product::where('user_id', $userId)->get();
+        $products = $request->user()->products;
 
         return new ProductCollection($products);
     }
