@@ -28,10 +28,11 @@ POST http://localhost:8000/api/products
 Accept: application/json
 Authorization: Bearer 2|qr2nEJ5mdfgrcpMjiO5O21zJrsuvZKnTHBrCl64u8c165e65
 Content-Type: application/json
+Accept-Language: es
 
 {
     "name": "AULA F75",
-    "price": 1321,
+    "price": "Hopla",
     "description": "Teclado Mecanico"
 }
 
