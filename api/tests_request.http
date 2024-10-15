@@ -40,6 +40,7 @@ PUT http://localhost:8000/api/products/3
 Accept: application/json
 Authorization: Bearer 2|qr2nEJ5mdfgrcpMjiO5O21zJrsuvZKnTHBrCl64u8c165e65
 Content-Type: application/json
+Accept-Language: es
 
 {
     "name": "AULA X122",

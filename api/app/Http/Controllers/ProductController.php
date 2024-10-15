@@ -61,11 +61,23 @@ class ProductController extends Controller
         return new ProductResource($product);
     }
 
-    public function update(UpdateProductRequest $request, Product $product): JsonResponse
+    public function update(UpdateProductRequest $request, $id): JsonResponse
     {
         try {
+            $product = Product::find($id);
+
+            if (!$product) {
+                return response()->json([
+                    'status' => false,
+                    'message' => __('product_messages.not_found')
+                ], 404);
+            }
+
             if ($request->user()->cannot('update', $product)) {
-                abort(403);
+                return response()->json([
+                    'status' => false,
+                    'message' => __('product_messages.unable_to_update')
+                ], 403);
             }
 
             $product->name = $request->name;
@@ -76,14 +88,14 @@ class ProductController extends Controller
 
             return response()->json([
                 'status' => true,
-                'message' => 'Product updated successfully',
+                'message' => __('product_messages.product_updated'),
                 'data' => $product
             ]);
 
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage()
+                'message' => __('product_messages.something_went_wrong')
             ], 500);
         }
     }
@@ -104,7 +116,7 @@ class ProductController extends Controller
                 return response()->json([
                     'status' => false,
                     'message' => __('product_messages.unable_to_delete')
-                ]);
+                ], 403);
             }
 
             $product->delete();
