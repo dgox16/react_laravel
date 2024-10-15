@@ -96,14 +96,14 @@ class ProductController extends Controller
             if (!$product) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Product not found',
+                    'message' => __('product_messages.not_found')
                 ], 404);
             }
 
             if ($request->user()->cannot('delete', $product)) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Unable to delete product',
+                    'message' => __('product_messages.unable_to_delete')
                 ]);
             }
 
@@ -111,13 +111,12 @@ class ProductController extends Controller
 
             return response()->json([
                 'status' => true,
-                'message' => 'Product deleted successfully',
+                'message' => __('product_messages.product_deleted'),
             ]);
         } catch (Throwable $th) {
-
             return response()->json([
                 'status' => false,
-                'message' => 'Error in deleting the product',
+                'message' => __('product_messages.something_went_wrong')
             ], 500);
         }
     }
