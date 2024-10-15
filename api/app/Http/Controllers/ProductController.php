@@ -39,7 +39,10 @@ class ProductController extends Controller
     {
         try {
             if ($request->user()->cannot('create', Product::class)) {
-                abort(403);
+                return response()->json([
+                    'status' => false,
+                    'message' => __('product_messages.unable_to_create')
+                ], 403);
             }
             $product = Product::create([
                 'name' => $request->name,
@@ -50,14 +53,14 @@ class ProductController extends Controller
 
             return response()->json([
                 'status' => true,
-                'message' => 'Product created successfully',
+                'message' => __('product_messages.product_created'),
                 'data' => $product
             ]);
 
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage()
+                'message' => __('product_messages.something_went_wrong')
             ], 500);
         }
     }
