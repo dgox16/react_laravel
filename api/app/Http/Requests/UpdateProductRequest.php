@@ -28,4 +28,17 @@ class UpdateProductRequest extends FormRequest
             'description' => 'required',
         ];
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => __('request_validation_messages.required'),
+            'price.required' => __('request_validation_messages.required'),
+            'price.numeric' => __('request_validation_messages.numeric'),
+            'description.required' => __('request_validation_messages.required'),
+        ];
+    }
 }
