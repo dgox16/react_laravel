@@ -23,9 +23,9 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|string',
             'price' => 'required|numeric',
-            'description' => 'required',
+            'description' => 'required|string',
         ];
     }
 
@@ -36,9 +36,11 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'name.required' => __('request_validation_messages.required'),
+            'name.string' => __('request_validation_messages.string'),
             'price.required' => __('request_validation_messages.required'),
             'price.numeric' => __('request_validation_messages.numeric'),
             'description.required' => __('request_validation_messages.required'),
+            'description.string' => __('request_validation_messages.string'),
         ];
     }
 }
