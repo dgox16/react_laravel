@@ -29,7 +29,7 @@ class UserController extends Controller
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage()
+                'message' => __('general_messages.something_went_wrong')
             ], 500);
         }
     }
@@ -55,7 +55,7 @@ class UserController extends Controller
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage()
+                'message' => __('general_messages.something_went_wrong')
             ], 500);
         }
     }
@@ -75,7 +75,7 @@ class UserController extends Controller
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage()
+                'message' => __('general_messages.something_went_wrong')
             ], 500);
         }
     }
@@ -91,7 +91,7 @@ class UserController extends Controller
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage()
+                'message' => __('general_messages.something_went_wrong')
             ], 500);
         }
     }

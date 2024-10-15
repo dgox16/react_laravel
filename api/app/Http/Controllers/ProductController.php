@@ -30,7 +30,7 @@ class ProductController extends Controller
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => __('product_messages.something_went_wrong')
+                'message' => __('general_messages.something_went_wrong')
             ], 500);
         }
     }
@@ -60,7 +60,7 @@ class ProductController extends Controller
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => __('product_messages.something_went_wrong')
+                'message' => __('general_messages.something_went_wrong')
             ], 500);
         }
     }
@@ -87,7 +87,7 @@ class ProductController extends Controller
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => __('product_messages.something_went_wrong')
+                'message' => __('general_messages.something_went_wrong')
             ], 500);
         }
     }
@@ -126,7 +126,7 @@ class ProductController extends Controller
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => __('product_messages.something_went_wrong')
+                'message' => __('general_messages.something_went_wrong')
             ], 500);
         }
     }
@@ -159,7 +159,7 @@ class ProductController extends Controller
         } catch (Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => __('product_messages.something_went_wrong')
+                'message' => __('general_messages.something_went_wrong')
             ], 500);
         }
     }
