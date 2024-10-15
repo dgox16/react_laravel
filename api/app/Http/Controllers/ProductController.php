@@ -65,12 +65,31 @@ class ProductController extends Controller
         }
     }
 
-    public function show(Request $request, Product $product): ProductResource
+    public function show(Request $request, $id)
     {
-        if ($request->user()->cannot('view', $product)) {
-            abort(403);
+        try {
+            $product = Product::find($id);
+
+            if (!$product) {
+                return response()->json([
+                    'status' => false,
+                    'message' => __('product_messages.not_found')
+                ], 404);
+            }
+
+            if ($request->user()->cannot('view', $product)) {
+                return response()->json([
+                    'status' => false,
+                    'message' => __('product_messages.unable_to_view')
+                ], 403);
+            }
+            return new ProductResource($product);
+        } catch (Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => __('product_messages.something_went_wrong')
+            ], 500);
         }
-        return new ProductResource($product);
     }
 
     public function update(UpdateProductRequest $request, $id): JsonResponse
