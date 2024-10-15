@@ -7,6 +7,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -87,11 +88,23 @@ class ProductController extends Controller
         }
     }
 
-    public function destroy(Request $request, Product $product): JsonResponse
+    public function destroy(Request $request, $id): JsonResponse
     {
         try {
+            $product = Product::find($id);
+
+            if (!$product) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Product not found',
+                ], 404);
+            }
+
             if ($request->user()->cannot('delete', $product)) {
-                abort(403);
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Unable to delete product',
+                ]);
             }
 
             $product->delete();
@@ -100,11 +113,11 @@ class ProductController extends Controller
                 'status' => true,
                 'message' => 'Product deleted successfully',
             ]);
-
         } catch (Throwable $th) {
+
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage()
+                'message' => 'Error in deleting the product',
             ], 500);
         }
     }
