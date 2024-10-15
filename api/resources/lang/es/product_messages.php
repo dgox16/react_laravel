@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'unable_to_view_all' => 'No autorizado para ver los productos',
     'unable_to_update' => 'No autorizado para actualizar el producto',
     'product_updated' => 'Producto actualizado satisfactoriamente',
     'not_found' => 'Producto no encontrado',

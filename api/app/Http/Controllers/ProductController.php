@@ -15,15 +15,24 @@ use Throwable;
 
 class ProductController extends Controller
 {
-    public function index(Request $request): ProductCollection
+    public function index(Request $request)
     {
-        if ($request->user()->cannot('viewAny', Product::class)) {
-            abort(403);
+        try {
+            if ($request->user()->cannot('viewAny', Product::class)) {
+                return response()->json([
+                    'status' => false,
+                    'message' => __('product_messages.unable_to_view_all')
+                ], 403);
+            }
+            $products = $request->user()->products;
+
+            return new ProductCollection($products);
+        } catch (Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => __('product_messages.something_went_wrong')
+            ], 500);
         }
-
-        $products = $request->user()->products;
-
-        return new ProductCollection($products);
     }
 
     public function store(StoreProductRequest $request): JsonResponse
