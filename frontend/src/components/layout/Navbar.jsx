@@ -18,10 +18,10 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="h-14 bg-gray-100 flex items-center justify-center">
+        <nav className="h-14 bg-gray-900 flex items-center justify-center">
             <div className="w-[900px]">
                 <div className="flex justify-between items-center">
-                    <div className="text-lg font-bold">
+                    <div className="text-lg text-gray-200 font-bold">
                         {user ? `Welcome, ${user.name}` : "LARAVEL - REACT"}
                     </div>
                     {user ? (
