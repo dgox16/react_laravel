@@ -11,7 +11,7 @@ export const PageLayout = ({children, authRequired = false}) => {
 
     return <>
         <Navbar/>
-        <main className="flex justify-center bg-gray-800">
+        <main className="flex justify-center bg-zinc-800">
             <div className="w-[900px]">
                 {children}
             </div>

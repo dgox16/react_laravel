@@ -2,15 +2,15 @@ import {Link} from "react-router-dom";
 
 export const ProductItem = ({product, deleteProduct}) => {
     return (
-        <div className="bg-gray-100 mb-3 p-4 rounded-lg flex justify-between">
+        <div className="bg-zinc-900 mb-3 p-4 rounded-lg flex justify-between">
             <div>
-                <h1 className="text-2xl font-semibold text-gray-900">
+                <h1 className="text-2xl font-semibold text-zinc-200">
                     {product.name}
                 </h1>
-                <h2 className="text-lg text-gray-700">
+                <h2 className="text-lg text-zinc-300">
                     {product.description}
                 </h2>
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-zinc-300">
                     {"$" + product.price}
                 </span>
             </div>

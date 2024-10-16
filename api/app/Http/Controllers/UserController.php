@@ -83,10 +83,9 @@ class UserController extends Controller
     public function getUser(Request $request): JsonResponse
     {
         try {
-            $user = Auth::user();
             return response()->json([
                 'status' => true,
-                'data' => $user
+                'data' => $request->user()
             ]);
         } catch (Throwable $th) {
             return response()->json([

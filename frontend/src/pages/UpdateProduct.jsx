@@ -3,6 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useForm} from "../hooks/useForm.js";
 import {getProductRequest, updateProductRequest} from "../services/productRequest.js";
 import {useEffect} from "react";
+import {InputField} from "../components/ui/InputField.jsx";
 
 export const UpdateProduct = () => {
     const {formData, handleChange, setFormData} = useForm({
@@ -40,33 +41,33 @@ export const UpdateProduct = () => {
     return (
         <PageLayout authRequired={true}>
             <div className="flex justify-center items-center h-[calc(100vh-56px)]">
-                <div className="text-center w-fit rounded-md bg-gray-100 py-7 px-6 flex justify-center flex-col">
-                    <h1 className="text-3xl font-bold text-gray-700 mb-5 uppercase">Update product</h1>
+                <div className="text-center w-fit rounded-md bg-zinc-900 py-7 px-6 flex justify-center flex-col">
+                    <h1 className="text-3xl font-bold text-zinc-100 mb-5 uppercase">Update product</h1>
                     <form onSubmit={handleSubmit} className={"flex justify-center"}>
                         <div className="">
-                            <div className="flex flex-row mt-4">
-                                <label htmlFor="name" className="mr-4 text-lg">Name:</label>
-                                <input type="text" name="name" className="w-full"
-                                       value={formData.name}
-                                       onChange={handleChange}
-                                />
-                            </div>
-                            <div className="flex flex-row mt-4">
-                                <label htmlFor="description" className="mr-4 text-lg">Description:</label>
-                                <input type="text" name="description" className="w-full"
-                                       value={formData.description}
-                                       onChange={handleChange}
-                                />
-                            </div>
-                            <div className="flex flex-row mt-4">
-                                <label htmlFor="price" className="mr-4 text-lg">Price: </label>
-                                <input type="number" name="price" className="w-full"
-                                       value={formData.price}
-                                       onChange={handleChange}
-                                />
-                            </div>
+                            <InputField
+                                label={"Name:"}
+                                name={"name"}
+                                type={"text"}
+                                value={formData.name}
+                                onChange={handleChange}
+                            />
+                            <InputField
+                                label={"Description:"}
+                                name={"description"}
+                                type={"text"}
+                                value={formData.description}
+                                onChange={handleChange}
+                            />
+                            <InputField
+                                label={"Price:"}
+                                name={"price"}
+                                type={"number"}
+                                value={formData.price}
+                                onChange={handleChange}
+                            />
                             <button type="submit"
-                                    className="p-2 bg-yellow-400 w-full font-semibold mt-5 rounded-lg">Submit
+                                    className="p-2 bg-yellow-200 text-yellow-800 w-full font-semibold mt-5 rounded-lg">Submit
                             </button>
                         </div>
                     </form>

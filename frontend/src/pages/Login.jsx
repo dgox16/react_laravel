@@ -35,12 +35,12 @@ export const Login = () => {
     return (
         <PageLayout>
             <div className="flex justify-center items-center h-[calc(100vh-56px)]">
-                <div className="text-center w-fit rounded-lg bg-gray-900 py-7 px-6 flex justify-center flex-col">
-                    <h1 className="text-3xl font-bold text-gray-100 mb-5 uppercase">Login</h1>
+                <div className="text-center w-fit rounded-lg bg-zinc-900 py-7 px-6 flex justify-center flex-col">
+                    <h1 className="text-3xl font-bold text-zinc-100 mb-5 uppercase">Login</h1>
                     <form onSubmit={handleSubmit} className={"flex justify-center"}>
-                        <div className="">
+                        <div>
                             <InputField
-                                label={"Name:"}
+                                label={"Email:"}
                                 name={"email"}
                                 type={"email"}
                                 value={formData.email}
@@ -54,7 +54,7 @@ export const Login = () => {
                                 onChange={handleChange}
                             />
                             <button type="submit"
-                                    className="p-2 bg-green-300 text-green-800 w-full font-semibold mt-5 rounded-lg">Submit
+                                    className="p-2 bg-green-200 text-green-800 w-full font-semibold mt-5 rounded-lg">Submit
                             </button>
                         </div>
                     </form>
