@@ -6,10 +6,9 @@ import {Loader} from "../components/ui/Loader.jsx";
 export const App = () => {
     const {loading} = useValidateUser()
     return (
-        loading ? (
+        loading ?
             <Loader/>
-        ) : (
+            :
             <RouterProvider router={router}/>
-        )
     );
 }

@@ -10,7 +10,7 @@ export const useValidateUser = () => {
             const validateSession = async () => {
                 try {
                     const res = await validateUserRequest();
-                    setUser(res);
+                    setUser(res.data);
                 } catch (e) {
                     logout();
                 } finally {

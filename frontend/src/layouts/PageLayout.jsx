@@ -3,9 +3,7 @@ import {useAuthStore} from "../store/auth.js";
 import {Navigate} from "react-router-dom";
 
 export const PageLayout = ({children, authRequired = false}) => {
-    const {
-        user
-    } = useAuthStore();
+    const {user} = useAuthStore();
 
     if (authRequired && !user) {
         return <Navigate to="/login" replace/>;
@@ -13,7 +11,7 @@ export const PageLayout = ({children, authRequired = false}) => {
 
     return <>
         <Navbar/>
-        <main className="flex justify-center">
+        <main className="flex justify-center bg-gray-800">
             <div className="w-[900px]">
                 {children}
             </div>
