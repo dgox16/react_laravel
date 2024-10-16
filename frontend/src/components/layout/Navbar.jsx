@@ -26,7 +26,7 @@ export const Navbar = () => {
                     </div>
                     {user ? (
                             <button
-                                className="bg-pink-300 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-pink-800"
+                                className="bg-pink-200 px-3 py-2 rounded-lg font-semibold hover:scale-105 transition text-pink-800"
                                 onClick={handleLogout}
                             >
                                 Logout
